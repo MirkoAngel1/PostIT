@@ -46,7 +46,7 @@ def edit(request, pk):
             grabar.save()
             return mostrar_notas(request)
         else:
-            return redirect('edit/',pk)
+            return redirect('edit/', pk)
     else:
         print("enviar formulario")
         newnote = registernota(instance=buscar)
@@ -80,11 +80,11 @@ def newnota(request):
             model.fecha = newnote.cleaned_data["fecha"]
             model.color = newnote.cleaned_data["color"]
             grabar = nota(id_usuario=user, titulo=model.titulo, fecha=model.fecha,
-                          descripcion=model.descripcion, color=model.color)
+                          descripcion=model.descripcion)
             grabar.save()
-            return mostrar_notas(request)
+            return redirect('home')
         else:
-            return redirect('home', {"newnote": newnote})
+            return redirect('create', {"newnote": newnote})
     else:
         newnote = registernota()
     return render(request, 'home/create.html', {"newnote": newnote})

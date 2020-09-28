@@ -17,7 +17,7 @@
           {% csrf_token %}
           <div class="card-header" id="titulocard">{{newnote.titulo}}</div>
           <div class="card-header" placeholder="fecha" id="fecha">{{newnote.fecha}}</div>
-
+          {{newnote.color}}
           {{newnote.descripcion}}
           <div class="card-body" id="fondo" onclick="changeColor()">
 
