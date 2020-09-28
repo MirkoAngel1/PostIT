@@ -1,0 +1,39 @@
+{% extends 'login/index.html' %}
+<!DOCTYPE html>
+{% load static %} {% block cabeza %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="{% static 'css/changePass.css' %}" />
+  <title>Form Change Password</title>
+</head>
+{% endblock %} {% block cuerpo %}
+
+<body>
+  <section class="form-new-pass" id="form">
+    <h4>Change Password</h4>
+    <form action="" method="POST" id="change-pass" class="input-group">
+      {% csrf_token %}
+      Old Paswword:
+      {{form.old_password}}
+      New Password:
+      {{form.new_password1}}
+      Repeat New Password:
+      {{form.new_password2}}
+      <button type="submit" class="submit-btn">Save</button>
+      <a href="{% url 'settings' %}" class="submit-btn" id="cancel">Cancel</a>
+    </form>
+    <div class="clearfix-padding">
+      <form action="{% url 'home' %}" method="POST" id="Change_password" class="input-group1">
+        {% csrf_token %}
+        <button type="submit" class="submit-btn">Home</button>
+      </form>
+    </div>
+  </section>
+</body>
+
+</html>
+{% endblock %}
