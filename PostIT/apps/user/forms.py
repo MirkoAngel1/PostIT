@@ -39,7 +39,7 @@ class registernota(forms.ModelForm):
         attrs={"placeholder": "titulo"}))
     descripcion = forms.CharField(max_length=400, widget=forms.Textarea)
     color = forms.CharField(max_length=60, widget=forms.TextInput(
-        attrs={"placeholder": "por ahora color"}))
+        attrs={"placeholder": "por ahora color", "value": "#000000"}))
 
     class Meta():
         model = nota

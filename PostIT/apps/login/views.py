@@ -89,12 +89,11 @@ def changeEmail(request):
         if model_email == user.email:
             grabar = User(id=user.id, username=user.username, email=model_email2,
                           password=user.password)
-            if (model_email2 == model_email3):
+            if (model_email != (model_email2 == model_email3)):
                 grabar.save()
                 user = User.objects.get(id=current_user.id)
                 user.is_staff = True
                 user.is_active = True
-                user.set_password(user.password)
                 user.save()
                 username = user.username
                 password = user.password
@@ -106,7 +105,7 @@ def changeEmail(request):
                     return mostrar_notas(request)
                 return redirect('home')
             else:
-                print("contraseña no coincide")
+                print("email no coincide o es igual al email viejo")
                 return redirect('changeEmail')
         else:
             print("formulario invalido")
@@ -146,10 +145,10 @@ def changeUsername(request):
         print(model_username)
         model_username2 = request.POST.get('username2')
         model_username3 = request.POST.get('username3')
-        if model_username2 != model_username:
+        if model_username == user.username:
             grabar = User(id=user.id, username=model_username2, email=user.email,
                           password=user.password)
-            if (model_username2 == model_username3):
+            if (model_username != (model_username2 == model_username3)):
                 grabar.save()
                 user = User.objects.get(id=current_user.id)
                 user.is_staff = True
@@ -165,7 +164,7 @@ def changeUsername(request):
                     return mostrar_notas(request)
                 return redirect('home')
             else:
-                print("contraseña no coincide")
+                print("username no coincide o es igual al viejo")
                 return redirect('changeUsername')
         else:
             print("formulario invalido")
@@ -173,48 +172,3 @@ def changeUsername(request):
     else:
         newUser = changeUsernameForm()
     return render(request, "login/changeUsername.html", {'User': newUser})
-
-
-'''@login_required
-def changePass(request):
-    current_user = request.user
-    user = User.objects.get(id=current_user.id)
-    if request.method == "POST":
-        newUser = PasswordChangeForm(request.POST)
-        print(newUser)
-        if newUser.is_valid:
-            model_pass = request.POST.get("pass")
-            model_pass2 = request.POST.get('pass2')
-            model_pass3 = request.POST.get('pass3')
-            print(model_pass)
-            print(model_pass2)
-            print(model_pass3)
-            print(user.password)
-            if model_pass2 != model_pass:
-                print("distinto")
-                grabar = User(id=user.id, username=user.username, email=user.email,
-                              password=model_pass2)
-                if (model_pass2 == model_pass3):
-                    print("entro?")
-                    grabar.save()
-                    user = User.objects.get(id=current_user.id)
-                    user.is_staff = True
-                    user.is_active = True
-                    user.set_password(user.password)
-                    user.save()
-                    username = user.username
-                    password = model_pass2
-                    user = authenticate(
-                        request, username=username, password=password)
-                    if user:
-                        print("logear")
-                        login(request, user)
-                        return mostrar_notas(request)
-                else:
-                    print("contraseña no coincide")
-        else:
-            print("formulario invalido")
-    else:
-        print("dar formulario")
-        newUser = PasswordChangeForm()
-    return render(request, "login/changePass.html", {'User': newUser})'''

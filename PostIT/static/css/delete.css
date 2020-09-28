@@ -176,6 +176,12 @@ textarea {
 
 }
 
+input {
+    background: transparent;
+    color: #ffffff;
+    color: solid;
+}
+
 #colorbutton {
     padding: 10px;
 }

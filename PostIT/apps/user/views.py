@@ -93,8 +93,12 @@ def newnota(request):
 @login_required
 def searchNote(request):
     current_user = request.user
+    newnote = registernota(request.POST)
     user = User.objects.get(id=current_user.id)
     buscale = request.Search
+    print(newnota)
+    print(buscale)
+
     if buscale != None:
         notuli = nota.objects.filter(titulo=buscale)
         ctx = {"user": current_user, "notas": notuli}
