@@ -22,13 +22,13 @@ class changeEmailForm(forms.Form):
 
 class changePassForm(forms.Form):
     password = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field", "placeholder": "Current Password"
+        "class": "input-field"
     }))
     password2 = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field", "placeholder": "New Password"
+        "class": "input-field"
     }))
     password3 = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field", "placeholder": "Repeat New Password"
+        "class": "input-field"
     }))
 
     class Meta():

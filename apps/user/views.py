@@ -2,25 +2,27 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-
+from django.db.models import Q
 from .forms import registernota, registerUser
 from .models import nota
-from .filters import notaFilter
 
 # Create your views here.
 
 
 @login_required
 def mostrar_notas(request):
+    busqueale = request.GET.get("buscar")
+    if busqueale:
+        todos = nota.objects.filter(
+            Q(titulo__icontains=busqueale) | Q(descripcion__icontains=busqueale)).distinct()
+        return render(request, "home/notas.html", {"notas": todos, "filtro": ""})
     try:
         current_user = request.user
         user = User.objects.get(id=current_user.id)
         todos = nota.objects.filter(id_usuario=user.id).order_by("fecha")
-        MyFilter = notaFilter(request.GET, queryset=todos)
-        todos = MyFilter.qs
     except:
         todos: ""
-    ctx = {"user": user, "notas": todos, "filtro": MyFilter}
+    ctx = {"user": user, "notas": todos}
     return render(request, "home/notas.html", ctx)
 
 

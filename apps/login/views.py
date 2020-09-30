@@ -38,9 +38,9 @@ def indexPage(request):
         model.email = newUser.cleaned_data["email"]
         model.password1 = newUser.cleaned_data["password1"]
         model.password2 = newUser.cleaned_data["password2"]
-        grabar = User(username=model.username, email=model.email,
-                      password=model.password1)
-        if (model.password1 == model.password2):
+        if (type(model.password) != int) and (model.password != model.email) and (model.password != model.username) and (len(model.password1) > 7) and (model.password1 == model.password2):
+            grabar = User(username=model.username, email=model.email,
+                          password=model.password1)
             grabar.save()
             user = User.objects.get(username=model.username)
             user.is_staff = True
@@ -54,6 +54,8 @@ def indexPage(request):
                 login(request, user)
                 return mostrar_notas(request)
             # messages.success(request, 'New user create whit name '+model.username)
+        else:
+            print("error en el formulario")
     else:
         newUser = registerUser()
         log_in = LoginForm()
