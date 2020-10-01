@@ -20,11 +20,8 @@
   </form>
   <form action="" method="POST" id="change-pass">
     {% csrf_token %}
-    <div class="changePass" id="oldPass">Old email:</div>
     <div id="changePass2"> {{User.email}}</div>
-    <div class="changePass" id="newPass">New email:</div>
     <div id="changePass2">{{User.email2}}</div>
-    <div class="changePass" id="repeatPass">Repeat New email:</div>
     <div id="changePass2">{{User.email3}}</div>
     <button type="submit" class="submit-btn" id="save">Save</button>
   </form>
