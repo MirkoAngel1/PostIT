@@ -1,0 +1,15 @@
+apps/login/__pycache__/__init__.cpython-38.pyc
+apps/login/__pycache__/admin.cpython-38.pyc
+PostIT/__pycache__/wsgi.cpython-38.pyc
+PostIT/__pycache__/urls.cpython-38.pyc
+apps/login/__pycache__/forms.cpython-38.pyc
+apps/login/__pycache__/models.cpython-38.pyc
+apps/login/__pycache__/urls.cpython-38.pyc
+apps/login/__pycache__/views.cpython-38.pyc
+apps/user/__pycache__/__init__.cpython-38.pyc
+apps/user/__pycache__/admin.cpython-38.pyc
+apps/user/__pycache__/forms.cpython-38.pyc
+apps/user/__pycache__/models.cpython-38.pyc
+apps/user/__pycache__/urls.cpython-38.pyc
+apps/user/__pycache__/views.cpython-38.pyc
+PostIT/__pycache__/__init__.cpython-38.pyc
