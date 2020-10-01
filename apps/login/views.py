@@ -32,6 +32,7 @@ def indexPage(request):
                 return redirect('index')
         else:
             print("")
+            return redirect('index')
     newUser = registerUser(request.POST)
     model = User
     if newUser.is_valid():

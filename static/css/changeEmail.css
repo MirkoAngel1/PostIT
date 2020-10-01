@@ -16,6 +16,13 @@ html {
   background-size: cover;
 }
 
+#Change_password {
+  justify-content: center;
+  text-align: center;
+  padding-left: 15px;
+  margin-left: 15px;
+}
+
 .form-new-email {
   /*width: 400px;
   background: #24303c;

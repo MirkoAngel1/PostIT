@@ -7,8 +7,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="{% static 'css/changePass.css' %}" />
-    <title>Form Change Password</title>
+    <link rel="stylesheet" href="{% static 'css/changeUsername.css' %}" />
+    <title>Form Change username</title>
 </head>
 {% endblock %} {% block cuerpo %}
 
@@ -20,11 +20,8 @@
     </form>
     <form action="" method="POST" id="change-pass">
         {% csrf_token %}
-        <div class="changePass" id="oldPass">Old username:</div>
         <div id="changePass2"> {{User.username}}</div>
-        <div class="changePass" id="newPass">New username:</div>
         <div id="changePass2">{{User.username2}}</div>
-        <div class="changePass" id="repeatPass">Repeat New username:</div>
         <div id="changePass2">{{User.username3}}</div>
         <button type="submit" class="submit-btn" id="save">Save</button>
     </form>
