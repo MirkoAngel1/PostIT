@@ -1,4 +1,5 @@
 {% extends 'home/notas.html' %} {% load static %} {% block content1 %}
+<script src="{% static 'js/jscolor.js' %}"> </script>
 <html lang="en">
 
 <head>
@@ -17,16 +18,24 @@
           {% csrf_token %}
           <div class="card-header" id="titulocard">{{newnote.titulo}}</div>
           <div class="card-header" placeholder="fecha" id="fecha">{{newnote.fecha}}</div>
-          {{newnote.color}}
-          {{newnote.descripcion}}
-          <div class="card-body" id="fondo" onclick="changeColor()">
 
-            <p class="card-text" id="texto"></p>
-            <div id="elementId" onclick="fn_name()">
-              <div id="Myelement" onclick="changeColor()"></div>
-            </div>
-            <div id="buttons">
-              <button type="submit" class="btn btn-success">Save</button>
+          <script>
+            jscolor.presets.default = {
+              previewPosition: 'right',
+              mode: 'HVS',
+              closeButton: true,
+              buttonColor: 'rgba(255,8,8,1)',
+              controlBorderColor: 'rgba(0,0,0,1)'
+            };
+          </script>
+
+          <input data-jscolor={{newnote.color}}>
+
+
+          {{newnote.descripcion}}
+
+
+          <button type="submit" class="btn btn-success">Save</button>
         </form>
         <a href="{% url 'home' %}" class="btn btn-danger active" role="button" aria-pressed="true">Cancel</a>
         <!-- <input
