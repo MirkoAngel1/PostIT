@@ -43,11 +43,9 @@
       <div> -->
   <h1 class="p-3 mb-2 bg-dark text-white " id="titulo">PostIT</h1>
 
-  <form action="home" class="form-inline my-2 my-lg-0" id="search" method="get">
+  <form action="{% url 'home' %}" method="POST" class="input-group1">
     {% csrf_token %}
-    <input type="text" placeholder="Search..." name="buscar" value="">
-    <button class="btn btn-success my-2 my-sm-0" type="submit" id="botonBuscar">Search</button>
-    <a href="{% url 'create' %}" class="btn btn-primary active" role="button" aria-pressed="true" id="add">Add</a>
+    <button type="submit" class="submit-btn" id="Change_password">Home</button>
   </form>
   {% endblock %}
   {% block content2 %}
@@ -59,10 +57,6 @@
             <div class="card-header" id="titulocard">{{nota.titulo}}</div>
             <div class="card-header" id="fecha">{{nota.fecha}}</div>
             <p class="card-text" id="texto">{{nota.descripcion}}</p>
-            <div id="elementId" onclick="fn_name()">
-              <div id="Myelement" onclick="changeColor()">
-              </div>
-            </div>
             <div id="buttons">
               <a href="{% url 'edit' nota.id %}" class="btn btn-warning active" role="button"
                 aria-pressed="true">Update</a>

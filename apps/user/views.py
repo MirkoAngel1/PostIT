@@ -19,7 +19,7 @@ def mostrar_notas(request):
         todos = nota.objects.filter(
             Q(titulo__icontains=busqueale) | Q(descripcion__icontains=busqueale)).distinct()
         ctx = {"user": user, "notas": todos}
-        return render(request, "home/notas.html", ctx)
+        return render(request, "home/search.html", ctx)
     ctx = {"user": user, "notas": todos}
     return render(request, "home/notas.html", ctx)
 
