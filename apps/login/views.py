@@ -14,25 +14,31 @@ from django.contrib import messages
 
 
 def indexPage(request):
-    if request.method == "POST":
-        log_in = LoginForm(request.POST)
-        model_username = request.POST.get('username')
-        model_password = request.POST.get('password')
-        if (model_username != None) and (model_password != None):
-            if log_in.is_valid():
-                user = authenticate(username=model_username,
-                                    password=model_password)
-                login(request, user)
-                messages.success(request, 'User name is: '+model_username)
-                current_user = request.user
-                user = User.objects.get(username=model_username)
-                return mostrar_notas(request)
+    try:
+        if request.method == "POST":
+            log_in = LoginForm(request.POST)
+            model_username = request.POST.get('username')
+            model_password = request.POST.get('password')
+            if (model_username != None) and (model_password != None):
+                if log_in.is_valid():
+                    user = authenticate(username=model_username,
+                                        password=model_password)
+                    login(request, user)
+                    messages.success(request, 'User name is: '+model_username)
+                    current_user = request.user
+                    user = User.objects.get(username=model_username)
+                    if login:
+                        return mostrar_notas(request)
+                    else:
+                        return redirect('index')
+                else:
+                    messages.success(request, 'data error :')
+                    return redirect('index')
             else:
-                messages.success(request, 'data error :')
+                print("")
                 return redirect('index')
-        else:
-            print("")
-            return redirect('index')
+    except AttributeError:
+        return redirect('index')
     newUser = registerUser(request.POST)
     model = User
     if newUser.is_valid():
