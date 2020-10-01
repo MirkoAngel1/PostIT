@@ -14,11 +14,11 @@
 
 <body>
   <h4 id="subtitle">Change Password</h4>
+  <form action="{% url 'home' %}" method="POST" class="input-group1">
+    {% csrf_token %}
+    <button type="submit" class="submit-btn" id="Change_password">Home</button>
+  </form>
   <form action="" method="POST" id="change-pass">
-    <form action="{% url 'home' %}" method="POST" class="input-group1">
-      {% csrf_token %}
-      <button type="submit" class="submit-btn" id="Change_password">Home</button>
-    </form>
     {% csrf_token %}
     <div class="changePass" id="oldPass">Old Paswword:</div>
     <div id="changePass2"> {{form.old_password}}</div>
@@ -27,10 +27,10 @@
     <div class="changePass" id="repeatPass">Repeat New Password:</div>
     <div id="changePass2">{{form.new_password2}}</div>
     <button type="submit" class="submit-btn" id="save">Save</button>
-    <form action="{% url 'settings' %}" method="POST" class="input-group1">
-      {% csrf_token %}
-      <button type="submit" class="submit-btn" id="cancelar">Cancel</button>
-    </form>
+  </form>
+  <form action="{% url 'settings' %}" method="POST" class="input-group1">
+    {% csrf_token %}
+    <button type="submit" class="submit-btn" id="cancelar">Cancel</button>
   </form>
   <div>
 

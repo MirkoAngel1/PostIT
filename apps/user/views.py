@@ -32,11 +32,13 @@ def edit(request, pk):
         user = User.objects.get(id=current_user.id)
         newnote = registernota(request.POST)
         model = nota
+        print(newnota)
         if newnote.is_valid():
             model.titulo = newnote.cleaned_data["titulo"]
             model.descripcion = newnote.cleaned_data["descripcion"]
             model.fecha = newnote.cleaned_data["fecha"]
             model.color = newnote.cleaned_data["color"]
+            print(model.color)
             grabar = nota(id=buscar.id, id_usuario=user, titulo=model.titulo, fecha=model.fecha,
                           descripcion=model.descripcion, color=model.color)
             grabar.save()
