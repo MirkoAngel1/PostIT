@@ -43,6 +43,7 @@ def edit(request, pk):
             model.descripcion = newnote.cleaned_data["descripcion"]
             model.fecha = newnote.cleaned_data["fecha"]
             model.color = newnote.cleaned_data["color"]
+            print(model.color)
             grabar = nota(id=buscar.id, id_usuario=user, titulo=model.titulo, fecha=model.fecha,
                           descripcion=model.descripcion, color=model.color)
             grabar.save()
@@ -81,7 +82,8 @@ def newnota(request):
             model.descripcion = newnote.cleaned_data["descripcion"]
             model.fecha = newnote.cleaned_data["fecha"]
             model.color = newnote.cleaned_data["color"]
-            grabar = nota(id_usuario=user, titulo=model.titulo, fecha=model.fecha,
+            print(model.color)
+            grabar = nota(id_usuario=user, titulo=model.titulo, fecha=model.fecha, color=model.color,
                           descripcion=model.descripcion)
             grabar.save()
             return redirect('home')

@@ -1,5 +1,6 @@
 {% extends 'home/notas.html' %} {% load static %} {% block content1 %}
 <html lang="en">
+<script src="{% static 'js/jscolor.js' %}"> </script>
 
 <head>
   <meta charset="UTF-8" />
@@ -17,21 +18,31 @@
           {% csrf_token %}
           <div class="card-header" id="titulocard">{{nota.titulo}}</div>
           <div class="card-header" id="fecha">{{nota.fecha}}</div>
+
           <div id="fondo" onclick="changeColor()">
-            <div id="colorbutton"> Background:
-              <input name="MyColorPicker" type="color" id="MyColorPicker" />
-            </div>
-            {{nota.color}}
-            <div id="descripcion">{{nota.descripcion}}</div>
-            <div id="buttonss">
-              <button type="submit" class="btn btn-success">Save</button>
-              <a href="{% url 'home' %}" class="btn btn-danger active" role="button" aria-pressed="true">Cancel</a>
-            </div>
+            <script>
+              jscolor.presets.default = {
+                previewPosition: 'right',
+                mode: 'HVS',
+                closeButton: true,
+                buttonColor: 'rgba(255,8,8,1)',
+                controlBorderColor: 'rgba(0,0,0,1)'
+              };
+            </script>
+
+            <input data-jscolor={{newnote.color}}>
           </div>
-        </form>
+
+          <div id="descripcion">{{nota.descripcion}}</div>
+          <div id="buttonss">
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="{% url 'home' %}" class="btn btn-danger active" role="button" aria-pressed="true">Cancel</a>
+          </div>
       </div>
+      </form>
     </div>
   </div>
+</div>
 </div>
 
 {% endblock %}
