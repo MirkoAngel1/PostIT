@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import HttpResponse, redirect, render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import PasswordChangeForm
 
@@ -9,7 +9,7 @@ from apps.user.forms import LoginForm, registernota, registerUser
 from apps.user.models import nota
 from apps.user.views import mostrar_notas
 
-from .forms import changeUsernameForm, changeEmailForm, changePassForm
+from .forms import changeUsernameForm, changeEmailForm
 from django.contrib import messages
 
 
@@ -78,9 +78,7 @@ def changeEmail(request):
     user = User.objects.get(id=current_user.id)
     if request.method == "POST":
         newUser = changeEmailForm(request.POST)
-        print(newUser)
         model_email = request.POST.get("email")
-        print(model_email)
         model_email2 = request.POST.get('email2')
         model_email3 = request.POST.get('email3')
         if model_email == user.email:
@@ -97,7 +95,6 @@ def changeEmail(request):
                 user = authenticate(
                     request, username=username, password=password)
                 if user:
-                    print("logear")
                     login(request, user)
                     return mostrar_notas(request)
                 return redirect('home')
@@ -116,7 +113,6 @@ def changeEmail(request):
 def changePass(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
-        print(form)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
@@ -137,9 +133,7 @@ def changeUsername(request):
     user = User.objects.get(id=current_user.id)
     if request.method == "POST":
         newUser = changeUsernameForm(request.POST)
-        print(newUser)
         model_username = request.POST.get("username")
-        print(model_username)
         model_username2 = request.POST.get('username2')
         model_username3 = request.POST.get('username3')
         if model_username == user.username:
@@ -156,7 +150,6 @@ def changeUsername(request):
                 user = authenticate(
                     request, username=username, password=password)
                 if user:
-                    print("logear")
                     login(request, user)
                     return mostrar_notas(request)
                 return redirect('home')

@@ -12,38 +12,31 @@ from .models import nota
 @login_required
 def mostrar_notas(request):
     busqueale = request.GET.get("buscar")
+    current_user = request.user
+    user = User.objects.get(id=current_user.id)
+    todos = nota.objects.filter(id_usuario=user.id).order_by("fecha")
     if busqueale:
         todos = nota.objects.filter(
             Q(titulo__icontains=busqueale) | Q(descripcion__icontains=busqueale)).distinct()
-        return render(request, "home/notas.html", {"notas": todos, "filtro": ""})
-    try:
-        current_user = request.user
-        user = User.objects.get(id=current_user.id)
-        todos = nota.objects.filter(id_usuario=user.id).order_by("fecha")
-    except:
-        todos: ""
+        ctx = {"user": user, "notas": todos}
+        return render(request, "home/notas.html", ctx)
     ctx = {"user": user, "notas": todos}
     return render(request, "home/notas.html", ctx)
 
 
 @login_required
 def edit(request, pk):
-    print(pk)
     buscar = nota.objects.get(id=pk)
-    print("antes del post")
     if request.method == "POST":
-        print("post")
         current_user = request.user
         user = User.objects.get(id=current_user.id)
         newnote = registernota(request.POST)
         model = nota
         if newnote.is_valid():
-            print("entro")
             model.titulo = newnote.cleaned_data["titulo"]
             model.descripcion = newnote.cleaned_data["descripcion"]
             model.fecha = newnote.cleaned_data["fecha"]
             model.color = newnote.cleaned_data["color"]
-            print(model.color)
             grabar = nota(id=buscar.id, id_usuario=user, titulo=model.titulo, fecha=model.fecha,
                           descripcion=model.descripcion, color=model.color)
             grabar.save()
@@ -82,7 +75,6 @@ def newnota(request):
             model.descripcion = newnote.cleaned_data["descripcion"]
             model.fecha = newnote.cleaned_data["fecha"]
             model.color = newnote.cleaned_data["color"]
-            print(model.color)
             grabar = nota(id_usuario=user, titulo=model.titulo, fecha=model.fecha, color=model.color,
                           descripcion=model.descripcion)
             grabar.save()
@@ -95,24 +87,5 @@ def newnota(request):
 
 
 @login_required
-def searchNote(request):
-    current_user = request.user
-    newnote = registernota(request.POST)
-    user = User.objects.get(id=current_user.id)
-    buscale = request.Search
-    print(newnota)
-    print(buscale)
-
-    if buscale != None:
-        notuli = nota.objects.filter(titulo=buscale)
-        ctx = {"user": current_user, "notas": notuli}
-        return render(request, "home/notas.html", ctx)
-    else:
-        ctx = {"user": current_user, "notas": notuli}
-    return mostrar_notas(request)
-
-
-@login_required
 def informatorio(request):
-
     return render(request, "home/informatorio.html", {})

@@ -33,7 +33,8 @@ class registerUser(forms.Form):
 
 
 class registernota(forms.ModelForm):
-    fecha = forms.DateField(widget=forms.DateTimeInput)
+    fecha = forms.DateField(widget=forms.DateInput(
+        attrs={"placeholder": "day/month/year"}))
     titulo = forms.CharField(max_length=60, widget=forms.TextInput(
         attrs={"placeholder": "titulo"}))
     descripcion = forms.CharField(max_length=400, widget=forms.Textarea)

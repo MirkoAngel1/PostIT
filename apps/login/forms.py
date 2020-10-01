@@ -6,13 +6,13 @@ from django.contrib.auth.forms import User
 class changeEmailForm(forms.Form):
 
     email = forms.EmailField(max_length=60, widget=forms.EmailInput(attrs={
-        "class": "input-field", "value": "", "placeholder": "Current Email"
+        "class": "input-field"
     }))
     email2 = forms.EmailField(max_length=60, widget=forms.EmailInput(attrs={
-        "class": "input-field", "placeholder": "New Email"
+        "class": "input-field"
     }))
     email3 = forms.EmailField(max_length=60, widget=forms.EmailInput(attrs={
-        "class": "input-field", "placeholder": "Repeat New Email"
+        "class": "input-field"
     }))
 
     class Meta():
@@ -20,29 +20,13 @@ class changeEmailForm(forms.Form):
         filter = ["email"]
 
 
-class changePassForm(forms.Form):
-    password = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field"
-    }))
-    password2 = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field"
-    }))
-    password3 = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field"
-    }))
-
-    class Meta():
-        model = User
-        filter = ['password']
-
-
 class changeUsernameForm(forms.Form):
     username = forms.CharField(max_length=60, widget=forms.TextInput(
-        attrs={"class": "input-field", "placeholder": "Current Username"}))
+        attrs={"class": "input-field"}))
     username2 = forms.CharField(max_length=60, widget=forms.TextInput(
-        attrs={"class": "input-field", "placeholder": "New Username"}))
+        attrs={"class": "input-field"}))
     username3 = forms.CharField(max_length=60, widget=forms.TextInput(
-        attrs={"class": "input-field", "placeholder": "Repeat New Username"}))
+        attrs={"class": "input-field"}))
 
     class Meta():
         model = User

@@ -47,8 +47,8 @@
     {% csrf_token %}
     <input type="text" placeholder="Buscar..." name="buscar" value="">
     <button class="btn btn-success my-2 my-sm-0" type="submit" id="botonBuscar">Search</button>
-    <a href="{% url 'create' %}" class="btn btn-primary active" role="button" aria-pressed="true" id="add">Add</a>
   </form>
+  <a href="{% url 'create' %}" class="btn btn-primary active" role="button" aria-pressed="true" id="add">Add</a>
   {% endblock %}
   {% block content2 %}
   <p>{% for nota in notas %}
