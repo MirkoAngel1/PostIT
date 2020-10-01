@@ -10,8 +10,7 @@ from apps.user.models import nota
 from apps.user.views import mostrar_notas
 
 from .forms import changeUsernameForm, changeEmailForm, changePassForm
-
-# from django.contrib import messages
+from django.contrib import messages
 
 
 def indexPage(request):
@@ -24,13 +23,15 @@ def indexPage(request):
                 user = authenticate(username=model_username,
                                     password=model_password)
                 login(request, user)
-                # messages.success(request, 'User name is: '+model_username)
+                messages.success(request, 'User name is: '+model_username)
                 current_user = request.user
                 user = User.objects.get(username=model_username)
                 return mostrar_notas(request)
             else:
-                # messages.success(request, 'data error :')
+                messages.success(request, 'data error :')
                 return redirect('index')
+        else:
+            print("")
     newUser = registerUser(request.POST)
     model = User
     if newUser.is_valid():
@@ -47,13 +48,9 @@ def indexPage(request):
             user.is_active = True
             user.set_password(model.password1)
             user.save()
-            username = newUser.cleaned_data.get('username')
-            password = newUser.cleaned_data.get('password1')
-            user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)
-                return mostrar_notas(request)
-            # messages.success(request, 'New user create whit name '+model.username)
+            return render(request, 'login/index.html', {'newUser': newUser, "log_in": log_in})
+            messages.success(
+                request, 'New user create whit name '+model.username)
         else:
             print("error en el formulario")
     else:
@@ -74,8 +71,6 @@ def settingsUser(request):
     user = User.objects.get(id=current_user.id)
     ctx = {"user": user}
     return render(request, 'login/settings.html', ctx)
-
- # permiso para usuario
 
 
 def changeEmail(request):
