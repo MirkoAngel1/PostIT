@@ -1,4 +1,4 @@
-{% extends 'login/index.html' %}
+{% extends 'login/index2.html' %}
 <!DOCTYPE html>
 {% load static %} {% block cabeza %}
 <html lang="en">
@@ -13,26 +13,28 @@
 {% endblock %} {% block cuerpo %}
 
 <body>
-  <section class="form-new-pass" id="form">
-    <h4>Change Password</h4>
-    <form action="" method="POST" id="change-pass" class="input-group">
+  <h4 id="subtitle">Change Password</h4>
+  <form action="" method="POST" id="change-pass">
+    <form action="{% url 'home' %}" method="POST" class="input-group1">
       {% csrf_token %}
-      Old Paswword:
-      {{form.old_password}}
-      New Password:
-      {{form.new_password1}}
-      Repeat New Password:
-      {{form.new_password2}}
-      <button type="submit" class="submit-btn">Save</button>
-      <a href="{% url 'settings' %}" class="submit-btn" id="cancel">Cancel</a>
+      <button type="submit" class="submit-btn" id="Change_password">Home</button>
     </form>
-    <div class="clearfix-padding">
-      <form action="{% url 'home' %}" method="POST" id="Change_password" class="input-group1">
-        {% csrf_token %}
-        <button type="submit" class="submit-btn">Home</button>
-      </form>
-    </div>
-  </section>
+    {% csrf_token %}
+    <div class="changePass" id="oldPass">Old Paswword:</div>
+    <div id="changePass2"> {{form.old_password}}</div>
+    <div class="changePass" id="newPass">New Password:</div>
+    <div id="changePass2">{{form.new_password1}}</div>
+    <div class="changePass" id="repeatPass">Repeat New Password:</div>
+    <div id="changePass2">{{form.new_password2}}</div>
+    <button type="submit" class="submit-btn" id="save">Save</button>
+    <form action="{% url 'settings' %}" method="POST" class="input-group1">
+      {% csrf_token %}
+      <button type="submit" class="submit-btn" id="cancelar">Cancel</button>
+    </form>
+  </form>
+  <div>
+
+  </div>
 </body>
 
 </html>
