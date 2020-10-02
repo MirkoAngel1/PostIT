@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import *
-from apps.login.views import *
+from .views import mostrar_notas, edit, newnota, deleteNote, informatorio
 
 urlpatterns = [
     path("home/", mostrar_notas, name="home"),

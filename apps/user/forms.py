@@ -36,10 +36,12 @@ class registernota(forms.ModelForm):
     fecha = forms.DateField(widget=forms.DateInput(
         attrs={"placeholder": "day/month/year"}))
     titulo = forms.CharField(max_length=60, widget=forms.TextInput(
-        attrs={"placeholder": "titulo"}))
-    descripcion = forms.CharField(max_length=400, widget=forms.Textarea)
-    color = forms.CharField(max_length=60, widget=forms.TextInput)
+        attrs={"placeholder": "Tittle"}))
+    descripcion = forms.CharField(max_length=400, widget=forms.Textarea(
+        attrs={"placeholder": "Description"}))
+    color = forms.CharField(max_length=60, widget=forms.TextInput(
+        attrs={"value": "#FFFFFF"}))
 
     class Meta():
         model = nota
-        fields = '__all__'
+        fields = ['fecha', 'titulo', 'descripcion', 'color']

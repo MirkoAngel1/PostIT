@@ -41,7 +41,6 @@
     <div class="row content" id="cuerpo">
       <div> -->
   <h1 class="p-3 mb-2 bg-dark text-white " id="titulo">PostIT</h1>
-
   <form action="home" class="form-inline my-2 my-lg-0" id="search" method="get">
     {% csrf_token %}
     <input type="text" placeholder="Search..." name="buscar" value="">
@@ -50,39 +49,26 @@
   </form>
   {% endblock %}
   {% block content2 %}
-  <p>{% for nota in notas %}
-    <div class="container">
-      <div class="row">
-        <div class="col-sm" id="card">
-          <div class="card text-white bg-dark mb-3" id="contentCard">
-            <div class="card-header" id="titulocard">{{nota.titulo}}</div>
-            <div class="card-header" id="fecha">{{nota.fecha}}</div>
-            <p class="card-text" id="texto">{{nota.descripcion}}</p>
-            <div id="elementId" onclick="fn_name()">
-              <div id="Myelement" onclick="changeColor()">
-              </div>
-            </div>
-            <div id="buttons">
-              <a href="{% url 'edit' nota.id %}" class="btn btn-warning active" role="button"
-                aria-pressed="true">Update</a>
-              <a href="{% url 'delete' nota.id %}" class="btn btn-danger active" role="button"
-                aria-pressed="true">Delete</a>
-              <!-- <input
-                          type="checkbox"
-                          id="vehicle1"
-                          name="vehicle1"
-                          value="Bike"
-                        />
-                        <label for="vehicle1">Hecho: {{nota.check}}</label><br /> -->
-            </div>
-          </div>
+  <div class="container" id="boxContainer">
+    <div class="row">
+      {% for nota in notas %}
+      <div class="card text-black col-md-3" style="background-color:{{nota.color}}" id="boxCard">
+        <div class="card" id="titulocard">{{nota.titulo}}</div>
+        <div class="card" id="fecha">{{nota.fecha}}</div>
+        <p class="card-text" id="texto">{{nota.descripcion}}</p>
+
+        <div id="buttons">
+          <a href="{% url 'edit' nota.id %}" class="btn btn-warning active" role="button" aria-pressed="true">Update</a>
+          <a href="{% url 'delete' nota.id %}" class="btn btn-danger active" role="button"
+            aria-pressed="true">Delete</a>
         </div>
+
+
       </div>
+      {% endfor %}
     </div>
-    </div>
-    {% endfor %}</p>
-  {% endblock %}
   </div>
+  {% endblock %}
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
   </script>

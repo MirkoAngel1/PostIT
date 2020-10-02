@@ -32,23 +32,22 @@ def edit(request, pk):
         user = User.objects.get(id=current_user.id)
         newnote = registernota(request.POST)
         model = nota
-        print(newnota)
+        # print(newnota.color)
         if newnote.is_valid():
             model.titulo = newnote.cleaned_data["titulo"]
             model.descripcion = newnote.cleaned_data["descripcion"]
             model.fecha = newnote.cleaned_data["fecha"]
             model.color = newnote.cleaned_data["color"]
-            print(model.color)
             grabar = nota(id=buscar.id, id_usuario=user, titulo=model.titulo, fecha=model.fecha,
                           descripcion=model.descripcion, color=model.color)
             grabar.save()
-            return mostrar_notas(request)
+            return redirect('home')
         else:
-            return redirect('edit/', pk)
+            return render(request, "home/edit.html", {"nota": newnote})
     else:
         print("enviar formulario")
         newnote = registernota(instance=buscar)
-    return render(request, "home/edit.html", {"nota": newnote})
+        return render(request, "home/edit.html", {"nota": newnote})
 
 
 @login_required
@@ -70,9 +69,10 @@ def newnota(request):
     if request.method == "POST":
         current_user = request.user
         user = User.objects.get(id=current_user.id)
-        newnote = registernota(request.POST)
         model = nota
+        newnote = registernota(request.POST)
         if newnote.is_valid():
+            print("entro")
             model.titulo = newnote.cleaned_data["titulo"]
             model.descripcion = newnote.cleaned_data["descripcion"]
             model.fecha = newnote.cleaned_data["fecha"]

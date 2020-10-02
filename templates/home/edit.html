@@ -13,7 +13,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm" id="card">
-      <div class="card text-white bg-dark mb-3" id="contentCard">
+      <div class="card text-white mb-3" id="contentCard">
         <form action="" method="POST" id="login">
           {% csrf_token %}
           <div class="changePass" id="oldPass"></div>
@@ -31,6 +31,7 @@
               buttonColor: 'rgba(255,8,8,1)',
               controlBorderColor: 'rgba(0,0,0,1)'
             };
+
             function update(picker) {
               document.getElementById('contentCard').style.background = picker.toBackground()
               document.getElementById('contentCard').style.backgroundColor = picker.toRGBAString()
@@ -41,18 +42,17 @@
             jscolor.trigger('input'); // triggers 'onInput' on all color pickers when they are ready
           </script>
 
-          <input data-jscolor="{{newnote.color}}" onInput="update(this.jscolor)">
-          <!-- <div class="card-header" id="oldPass">{{nota.titulo}}</div>
-          <div class="card-header" id="fecha">{{nota.fecha}}</div> -->
-          <div id="buttonss">
-            <button type="submit" class="btn btn-success">Save</button>
-            <a href="{% url 'home' %}" class="btn btn-danger active" role="button" aria-pressed="true">Cancel</a>
-          </div>
-
-        </form>
+          <input onInput="update(this.jscolor)" data-jscolor={{nota.color}} <div class="card-header" id="oldPass">
       </div>
+      <div id="buttonss">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'home' %}" class="btn btn-danger active" role="button" aria-pressed="true">Cancel</a>
+      </div>
+
+      </form>
     </div>
   </div>
+</div>
 </div>
 
 {% endblock %}

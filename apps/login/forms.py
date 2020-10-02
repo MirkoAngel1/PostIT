@@ -4,7 +4,6 @@ from django.contrib.auth.forms import User
 
 
 class changeEmailForm(forms.Form):
-
     email = forms.EmailField(max_length=60, widget=forms.EmailInput(attrs={
         "class": "input-field", "placeholder": "old email"
     }))
@@ -16,8 +15,8 @@ class changeEmailForm(forms.Form):
     }))
 
     class Meta():
-        model = User
-        filter = ["email"]
+        model = User  # saca el molde de User de ase datos
+        filter = ["email"]  # selecciona solo email
 
 
 class changeUsernameForm(forms.Form):
@@ -29,5 +28,5 @@ class changeUsernameForm(forms.Form):
         attrs={"class": "input-field", "placeholder": "repeat new username"}))
 
     class Meta():
-        model = User
-        filter = ['username']
+        model = User  # saca el molde de User de ase datos
+        filter = ['username']  # selecciona username nada mas

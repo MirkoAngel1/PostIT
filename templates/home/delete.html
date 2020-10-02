@@ -15,7 +15,11 @@
             <div class="card text-white bg-dark mb-3" id="contentCard">
                 <form action="" method="POST" id="delete" class="input-group">
                     {% csrf_token %}
-                    <div class="card-header" id="titulocard">{{nota.titulo}}</div>
+                    <div class="changePass" id="oldPass"></div>
+                    <div id="changePass2"> {{nota.titulo}}</div>
+
+
+
                     <div id="sure">¿Are you sure to delete this note?</div>
                     <div id="buttons">
                         <button type="submit" class="btn btn-danger">Delete</button>
