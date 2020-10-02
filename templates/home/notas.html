@@ -53,8 +53,8 @@
     <div class="row">
       {% for nota in notas %}
       <div class="card text-black col-md-3" style="background-color:{{nota.color}}" id="boxCard">
-        <div class="card" id="titulocard">{{nota.titulo}}</div>
-        <div class="card" id="fecha">{{nota.fecha}}</div>
+        <div class="card-text" id="titulocard">{{nota.titulo}}</div>
+        <div class="card-text" id="fecha">{{nota.fecha}}</div>
         <p class="card-text" id="texto">{{nota.descripcion}}</p>
 
         <div id="buttons">
@@ -79,7 +79,6 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
   </script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="{% static 'js/cards.js' %}"></script>
 </body>
 <footer class="bg-dark container-fluid text-center">
   <p>INFORMATORIO 2020 © </p>

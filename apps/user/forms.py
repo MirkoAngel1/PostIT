@@ -6,24 +6,24 @@ from .models import nota
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=60, widget=forms.TextInput(
-        attrs={"class": "input-field", "placeholder": "Usuario"}))
+        attrs={"class": "input-field", "placeholder": "User"}))
     password = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field", "placeholder": "Contraseña"
+        "class": "input-field", "placeholder": "Password"
     }))
 
 
 class registerUser(forms.Form):
 
     username = forms.CharField(max_length=60, widget=forms.TextInput(
-        attrs={"class": "input-field", "placeholder": "Usuario"}))
+        attrs={"class": "input-field", "placeholder": "User"}))
     email = forms.EmailField(max_length=60, widget=forms.EmailInput(attrs={
-        "class": "input-field", "placeholder": "email@ejemplo.com"
+        "class": "input-field", "placeholder": "email@example.com"
     }))
     password1 = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field", "placeholder": "Contraseña"
+        "class": "input-field", "placeholder": "Password"
     }))
     password2 = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={
-        "class": "input-field", "placeholder": "Confirmar contraseña"
+        "class": "input-field", "placeholder": "Confirme Password"
     }))
 
     class Meta():
