@@ -13,7 +13,7 @@
 <div class="container" id="boxContainer">
   <div class="row">
     <div class="card text-white mb-3" id="contentCard">
-      <form action="{% url '' %}" method="POST" id="login">
+      <form action="" method="POST" id="login">
         {% csrf_token %}
         <div class="card-tex" id="titulocard"></div>
         <div id="card-tex"> {{nota.titulo}}</div>
