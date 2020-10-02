@@ -17,7 +17,7 @@
       <div class="bg-dark p-4">
         <h4 class="text-white">PostIT</h4>
         <ul class="nav navbar-nav">
-          <li><a href="{% url 'settings' %}" class="text-light">settings</a></li>
+          <li><a href="{% url 'settings' %}" class="text-light">Settings</a></li>
           <li><a href="{% url 'informatorio' %}" class="text-light">Informatorio</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -45,22 +45,21 @@
     {% csrf_token %}
     <input type="text" placeholder="Search..." name="buscar" value="">
     <button class="btn btn-success my-2 my-sm-0" type="submit" id="botonBuscar">Search</button>
-    <a href="{% url 'create' %}" class="btn btn-primary active" role="button" aria-pressed="true" id="add">Add</a>
+    <a href="{% url 'create' %}" class="btn btn-primary" role="button" aria-pressed="true" id="add">Add</a>
   </form>
   {% endblock %}
   {% block content2 %}
   <div class="container" id="boxContainer">
     <div class="row">
       {% for nota in notas %}
-      <div class="card text-black col-md-3" style="background-color:{{nota.color}}" id="boxCard">
+      <div class="card text-white col-md-3" style="background-color:{{nota.color}}" id="boxCard">
         <div class="card-text" id="titulocard">{{nota.titulo}}</div>
         <div class="card-text" id="fecha">{{nota.fecha}}</div>
         <p class="card-text" id="texto">{{nota.descripcion}}</p>
 
         <div id="buttons">
-          <a href="{% url 'edit' nota.id %}" class="btn btn-warning active" role="button" aria-pressed="true">Update</a>
-          <a href="{% url 'delete' nota.id %}" class="btn btn-danger active" role="button"
-            aria-pressed="true">Delete</a>
+          <a href="{% url 'edit' nota.id %}" class="btn btn-warning " role="button" aria-pressed="true">Update</a>
+          <a href="{% url 'delete' nota.id %}" class="btn btn-danger " role="button" aria-pressed="true">Delete</a>
         </div>
 
 

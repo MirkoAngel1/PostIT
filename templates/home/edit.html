@@ -16,12 +16,12 @@
       <div class="card text-white mb-3" id="contentCard">
         <form action="" method="POST" id="login">
           {% csrf_token %}
-          <div class="changePass" id="oldPass"></div>
-          <div id="changePass2"> {{nota.titulo}}</div>
-          <div class="changePass" id="oldPass"></div>
-          <div id="changePass2"> {{nota.fecha}}</div>
-          <div class="changePass" id="oldPass"> </div>
-          <div id="changePass2"> {{nota.descripcion}}</div>
+          <div class="card-tex" id="titulocard"></div>
+          <div id="card-tex"> {{nota.titulo}}</div>
+          <div class="card-tex" id="fecha"></div>
+          <div id="card-tex"> {{nota.fecha}}</div>
+          <div class="card-tex" id="texto"> </div>
+          <div id="card-tex"> {{nota.descripcion}}</div>
 
           <script>
             jscolor.presets.default = {
@@ -46,7 +46,7 @@
       </div>
       <div id="buttonss">
         <button type="submit" class="btn btn-success">Save</button>
-        <a href="{% url 'home' %}" class="btn btn-danger active" role="button" aria-pressed="true">Cancel</a>
+        <a href="{% url 'home' %}" class="btn btn-danger" role="button" aria-pressed="true">Cancel</a>
       </div>
 
       </form>

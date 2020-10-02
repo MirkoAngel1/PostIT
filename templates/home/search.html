@@ -3,7 +3,6 @@
 {% block content1 %}
 <form action="home" class="form-inline my-2 my-lg-0" id="search" method="get">
   {% csrf_token %}
-  <input type="text" placeholder="Search..." name="buscar" value="">
   <a href="{% url 'home' %}" class="btn btn-primary active" role="button" aria-pressed="true" id="add">Home</a>
 </form>
 {% endblock %}
@@ -11,14 +10,14 @@
 <div class="container" id="boxContainer">
   <div class="row">
     {% for nota in notas %}
-    <div class="card text-black col-md-3" style="background-color:{{nota.color}}" id="boxCard">
-      <div class="card" id="titulocard">{{nota.titulo}}</div>
-      <div class="card" id="fecha">{{nota.fecha}}</div>
+    <div class="card text-white col-md-3" style="background-color:{{nota.color}}" id="boxCard">
+      <div class="card-text" id="titulocard">{{nota.titulo}}</div>
+      <div class="card-text" id="fecha">{{nota.fecha}}</div>
       <p class="card-text" id="texto">{{nota.descripcion}}</p>
 
       <div id="buttons">
-        <a href="{% url 'edit' nota.id %}" class="btn btn-warning active" role="button" aria-pressed="true">Update</a>
-        <a href="{% url 'delete' nota.id %}" class="btn btn-danger active" role="button" aria-pressed="true">Delete</a>
+        <a href="{% url 'edit' nota.id %}" class="btn btn-warning " role="button" aria-pressed="true">Update</a>
+        <a href="{% url 'delete' nota.id %}" class="btn btn-danger " role="button" aria-pressed="true">Delete</a>
       </div>
 
 

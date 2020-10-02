@@ -103,6 +103,7 @@ body {
   
   #contentCard {
     width: 18rem;
+    box-shadow: rgba(0, 0, 0, 0.75) 10px 10px 5px 0px;
   }
   
   #buttons {
@@ -156,5 +157,7 @@ body {
 
 #sure{
     padding-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 

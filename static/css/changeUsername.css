@@ -19,10 +19,20 @@ h4 {
     justify-content: center;
     text-align: center;
     padding-left: 15px;
-    margin-left: 15px;
+    margin-left: 24px;
 }
 
 .form-box {
     width: 380px;
     height: 550px;
+}
+
+#save{
+    padding-left: 15px;
+    margin-left: 24px;
+}
+
+#cancelar{
+    padding-left: 15px;
+    margin-left: 24px;
 }
