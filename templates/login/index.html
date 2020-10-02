@@ -5,6 +5,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
   <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&amp;display=swap" rel="stylesheet" />
   <link rel="icon" href="{% static 'images/icon.png' %}">
@@ -12,48 +15,54 @@
 </head>
 
 <body>
-  <div class="header">
-    <a href="">
-      <img id="header-icon" src="{% static 'images/headericon.png'%}" alt="icon">
-    </a>
-  </div>
-  <div class="main-container">
-    <div class="column">
-      <h1 id="bg-message">Create and store your own notes!</h1>
+  <div class="grid-container">
+    <div class="header">
+      <div class="header-hiperlink">
+        <a href="">
+          <img id="header-icon" src="{% static 'images/headericon.png'%}" alt="icon">
+        </a>
+      </div>
     </div>
-    <div class="column">
-      <div class="container">
-        <div id="form-box" class="form-box">
-          <!--<div class="form-icon">
-            <img id="form-icon" src="{% static 'images/icon.png'%}" alt="form-icon">
-          </div>
-        -->
-          <h1 id="title">PostIT</h1>
-          <div class="button-box">
-            <div id="toogle-btn"></div>
-            <button id="login-btn" type="button" class="toogle-btn" onclick="login()">Log In</button>
-            <button id="register-btn" type="button" class="toogle-btn" onclick="register()">Create Account</button>
-          </div>
+    <div class="left-side">
+      <div class="bg-message">
+        <h1>¡Crea y almacena tus propias notas!</h1>
+      </div>
+    </div>
+    <div class="right-side">
+      <div id="form-box" class="form-box">
+        <h1 id="title">PostIT</h1>
+        <div class="button-box">
+          <div id="toogle-btn"></div>
+          <button id="login-btn" type="button" class="toogle-btn" onclick="login()">Ingresar</button>
+          <button id="register-btn" type="button" class="toogle-btn" onclick="register()">Registrarse</button>
+        </div>
+        <div class="forms">
           <form method="POST" id="login" class="input-group">
-            {% csrf_token %}
-            {{log_in.username}}
+            {% csrf_token %} 
+            {{log_in.username}} 
             {{log_in.password}}
-            <button type="submit" class="submit-btn" id="submit-btn-login">Log in to My Account</button>
+            <button type="submit" class="submit-btn" id="submit-btn-login">
+              Ingresar a mi cuenta
+            </button>
           </form>
-          <form action="" method="POST" id="register" class="input-group">
-            {% csrf_token %}
+          <form method="POST" id="register" class="input-group">
+            {% csrf_token %} 
             {{newUser.username}}
             {{newUser.email}}
             {{newUser.password1}}
             {{newUser.password2}}
-            <button type="submit" class="submit-btn" id="submit-btn-register">Complete registration</button>
+            <button type="submit" class="submit-btn" id="submit-btn-register">
+              Completar registro
+            </button>
           </form>
         </div>
       </div>
     </div>
-  </div>
-  <div class="footer">
-    <h6>PostIT | Informatorio 2020 | COM3-G2</h6>
+    <div class="footer">
+      <div class="footer-message">
+        <h6>PostIT | Informatorio 2020 | COM3-G2</h6>
+      </div>
+    </div>  
   </div>
   <script src="{% static 'js/login.js' %}"></script>
 </body>
