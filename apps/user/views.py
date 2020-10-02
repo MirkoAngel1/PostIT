@@ -17,7 +17,7 @@ def mostrar_notas(request):
     todos = nota.objects.filter(id_usuario=user.id).order_by("fecha")
     if busqueale:
         todos = nota.objects.filter(
-            Q(titulo__icontains=busqueale) | Q(descripcion__icontains=busqueale)).distinct().filter(id_usuario=user.id)
+            Q(titulo__icontains=busqueale) | Q(titulo=busqueale) | Q(descripcion=busqueale) | Q(descripcion__icontains=busqueale)).distinct().filter(id_usuario=user.id)
         ctx = {"user": user, "notas": todos}
         return render(request, "home/search.html", ctx)
     ctx = {"user": user, "notas": todos}

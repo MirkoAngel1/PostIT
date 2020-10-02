@@ -10,49 +10,45 @@
   <title>Form Change nota</title>
 </head>
 {% endblock %} {% block content2 %}
-<div class="container">
+<div class="container" id="boxContainer">
   <div class="row">
-    <div class="col-sm" id="card">
-      <div class="card text-white mb-3" id="contentCard">
-        <form action="" method="POST" id="login">
-          {% csrf_token %}
-          <div class="card-tex" id="titulocard"></div>
-          <div id="card-tex"> {{nota.titulo}}</div>
-          <div class="card-tex" id="fecha"></div>
-          <div id="card-tex"> {{nota.fecha}}</div>
-          <div class="card-tex" id="texto"> </div>
-          <div id="card-tex"> {{nota.descripcion}}</div>
+    <div class="card text-white mb-3" id="contentCard">
+      <form action="" method="POST" id="login">
+        {% csrf_token %}
+        <div class="card-tex" id="titulocard"></div>
+        <div id="card-tex"> {{nota.titulo}}</div>
+        <div class="card-tex" id="fecha"></div>
+        <div id="card-tex"> {{nota.fecha}}</div>
+        <div class="card-tex" id="texto"> </div>
+        <div id="card-tex"> {{nota.descripcion}}</div>
+        <script>
+          jscolor.presets.default = {
+            previewPosition: 'right',
+            mode: 'HVS',
+            closeButton: true,
+            buttonColor: 'rgba(255,8,8,1)',
+            controlBorderColor: 'rgba(0,0,0,1)'
+          };
 
-          <script>
-            jscolor.presets.default = {
-              previewPosition: 'right',
-              mode: 'HVS',
-              closeButton: true,
-              buttonColor: 'rgba(255,8,8,1)',
-              controlBorderColor: 'rgba(0,0,0,1)'
-            };
+          function update(picker) {
+            document.getElementById('contentCard').style.background = picker.toBackground()
+            document.getElementById('contentCard').style.backgroundColor = picker.toRGBAString()
 
-            function update(picker) {
-              document.getElementById('contentCard').style.background = picker.toBackground()
-              document.getElementById('contentCard').style.backgroundColor = picker.toRGBAString()
+            console.log("andabien")
+          }
 
-              console.log("andabien")
-            }
+          jscolor.trigger('input'); // triggers 'onInput' on all color pickers when they are ready
+        </script>
+        <input onInput="update(this.jscolor)" data-jscolor={{nota.color}}>
 
-            jscolor.trigger('input'); // triggers 'onInput' on all color pickers when they are ready
-          </script>
-
-          <input onInput="update(this.jscolor)" data-jscolor={{nota.color}} <div class="card-header" id="oldPass">
-      </div>
-      <div id="buttonss">
-        <button type="submit" class="btn btn-success">Save</button>
-        <a href="{% url 'home' %}" class="btn btn-danger" role="button" aria-pressed="true">Cancel</a>
-      </div>
-
+        <div id="buttonss">
+          <button type="submit" class="btn btn-success">Save</button>
+          <a href="{% url 'home' %}" class="btn btn-danger" role="button" aria-pressed="true">Cancel</a>
+        </div>
       </form>
     </div>
+
   </div>
-</div>
 </div>
 
 {% endblock %}

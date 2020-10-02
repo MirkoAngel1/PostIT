@@ -63,6 +63,7 @@ h3 {
 }
 
 #titulo {
+  font-size: large;
   margin-top: 18px;
   left: 0px;
   justify-content: center;
@@ -105,6 +106,8 @@ li {
 #contentCard {
   width: 18rem;
   box-shadow: rgba(0, 0, 0, 0.75) 10px 10px 5px 0px;
+  margin-top: 50px;
+
 }
 
 #buttonss {
@@ -160,6 +163,7 @@ input {
   color: #ffffff;
   color: solid;
   border: none;
+  width: 280px;
   text-align: center;
 }
 
@@ -169,4 +173,8 @@ textarea {
   color: solid;
   border: none;
   text-align: center;
+}
+
+#card-tex{
+  font-size: 30px;
 }

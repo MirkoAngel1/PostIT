@@ -142,3 +142,8 @@ input#id_old_password div,
   text-align: center;
   justify-content: center;
 }
+
+#home{
+  font-size: 40px;
+  color: white;
+}
