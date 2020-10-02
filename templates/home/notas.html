@@ -17,12 +17,12 @@
       <div class="bg-dark p-4">
         <h4 class="text-white">PostIT</h4>
         <ul class="nav navbar-nav">
-          <li><a href="{% url 'settings' %}" class="text-light">Configuración</a></li>
+          <li><a href="{% url 'settings' %}" class="text-light">settings</a></li>
           <li><a href="{% url 'informatorio' %}" class="text-light">Informatorio</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span>Salir
+            <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span>Log Out
             </a>
           </li>
         </ul>
@@ -33,7 +33,7 @@
         aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <li><a class="text-light">welcome user {{user.username}}</a></li>
+      <li><a class="text-light">welcome {{user.username}}</a></li>
     </nav>
   </div>
   {% block content1 %}
