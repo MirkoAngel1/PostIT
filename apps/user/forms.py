@@ -37,7 +37,7 @@ class registernota(forms.ModelForm):
         attrs={"placeholder": "day/month/year"}))
     titulo = forms.CharField(max_length=60, widget=forms.TextInput(
         attrs={"placeholder": "Tittle"}))
-    descripcion = forms.CharField(max_length=400, widget=forms.Textarea(
+    descripcion = forms.CharField(max_length=60, widget=forms.Textarea(
         attrs={"placeholder": "Description"}))
     color = forms.CharField(max_length=60, widget=forms.TextInput(
         attrs={"value": "#2000FF"}))

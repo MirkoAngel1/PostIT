@@ -17,14 +17,14 @@ def mostrar_notas(request):
     todos = nota.objects.filter(id_usuario=user.id).order_by("fecha")
     if busqueale:
         todos = nota.objects.filter(
-            (Q(tituloicontains=busqueale) | Q(descripcionicontains=busqueale) and Q(id_usuario=user.id))).distinct()
+            Q(titulo__icontains=busqueale) | Q(descripcion__icontains=busqueale)).distinct().filter(id_usuario=user.id)
         ctx = {"user": user, "notas": todos}
         return render(request, "home/search.html", ctx)
     ctx = {"user": user, "notas": todos}
     return render(request, "home/notas.html", ctx)
 
 
-@login_required
+@ login_required
 def edit(request, pk):
     buscar = nota.objects.get(id=pk)
     if request.method == "POST":
@@ -50,7 +50,7 @@ def edit(request, pk):
         return render(request, "home/edit.html", {"nota": newnote})
 
 
-@login_required
+@ login_required
 def deleteNote(request, pk):
     buscar = nota.objects.get(id=pk)
     if request.method == "POST":

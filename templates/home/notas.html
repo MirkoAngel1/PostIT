@@ -43,7 +43,7 @@
   <h1 class="p-3 mb-2 bg-dark text-white " id="titulo">PostIT</h1>
   <form action="home" class="form-inline my-2 my-lg-0" id="search" method="get">
     {% csrf_token %}
-    <input type="text" placeholder="Search..." name="buscar" value="">
+    <input type="text" placeholder="Search..." name="buscar" value=" ">
     <button class="btn btn-success my-2 my-sm-0" type="submit" id="botonBuscar">Search</button>
     <a href="{% url 'create' %}" class="btn btn-primary" role="button" aria-pressed="true" id="add">Add</a>
   </form>

@@ -8,7 +8,7 @@ class nota(models.Model):
     id_usuario = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True)
     titulo = models.CharField(max_length=60)
-    descripcion = models.TextField(max_length=400)
+    descripcion = models.TextField(max_length=60)
     fecha = models.DateField(null=True, blank=True)
     color = models.CharField(max_length=60, null=True, blank=True)
 
