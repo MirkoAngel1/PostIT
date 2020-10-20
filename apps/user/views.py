@@ -57,7 +57,7 @@ def deleteNote(request, pk):
         grabar = nota(id=buscar.id, id_usuario=buscar.id_usuario, titulo=buscar.titulo, fecha=buscar.fecha,
                       descripcion=buscar.descripcion, color=buscar.color)
         grabar.delete()
-        return mostrar_notas(request)
+        return redirect('home')
     else:
         print("enviar formulario")
         newnote = registernota(instance=buscar)
